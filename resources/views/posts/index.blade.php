@@ -17,16 +17,15 @@
 
 
         @foreach ($posts as $post)
-            @php
-                $post = explode(';', $post);
-            @endphp
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $post[1] }}</h5>
-                    <p class="card-text">{{ $post[2] }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated at {{ $post[3] }}</small>
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <p class="card-text">{{ $post->content }}</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated at
+                            {{ $post->created_at }}</small>
                     </p>
-                    <a href="{{ url('posts/' . $post[0]) }}" class="btn btn-primary">Selengkapnya...</a>
+                    <a href="{{ url("posts/$post->id") }}" class="btn btn-primary">Selengkapnya...</a>
+                    <a href="{{ url("posts/$post->id/edit") }}" class="btn btn-warning">Edit Data</a>
                 </div>
             </div>
         @endforeach
