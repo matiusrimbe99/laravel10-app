@@ -18,6 +18,15 @@
 
             <p>{{ $post->content }}</p>
             <hr>
+
+            <p class="text-muted">{{ $total_comments }} Komentar</p>
+            @foreach ($comments as $comment)
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p>{{ $comment->comment }}</p>
+                    </div>
+                </div>
+            @endforeach
         </article>
         <a href="{{ url('posts') }}" class="btn btn-warning">
             < Kembali</a>
