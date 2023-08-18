@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,11 @@ Route::get('/', function () {
 // Route::get('hello', function () {
 //     return view('hello');
 // });
+Route::get('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
+Route::post('login', [AuthController::class, 'authenticate']);
+Route::get('register', [AuthController::class, 'register_form']);
+Route::post('register', [AuthController::class, 'register']);
 
 Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/create', [PostController::class, 'create']);
